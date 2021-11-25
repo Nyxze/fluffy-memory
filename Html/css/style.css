@@ -1,0 +1,33 @@
+
+*{
+    box-sizing: border-box;
+
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.col{
+
+    width: 75px;
+    height: 75px;
+    text-align: center;
+    background-color:orangered ;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+}
+
+.fizz{
+    background-color: #4CAF50;
+}
+
+.buzz{
+    background-color: #607d8b;
+}
+
+.fizz.buzz{
+    background-color: #ff9800;
+
+}
