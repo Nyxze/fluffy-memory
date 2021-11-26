@@ -1,6 +1,7 @@
-var fizz, buzz, numberAsked;
-var message = "";
+let fizz, buzz, numberAsked;
+let message = "";
 numberAsked = prompt("number?");
+
 if (numberAsked % 3 == 0) {
     message += "fizz" ;
 }
