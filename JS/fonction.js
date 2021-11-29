@@ -105,31 +105,79 @@ console.log(ttc(180,8));
 */
 
 
-function add(a,b){
-    return a+b;
+/**
+    function add(a,b){
+        return a+b;
+    
+    }
+    
+    
+    function factory (arg,f){
+        return function(b){
+            return f(arg,b)
+        };
+    
+    }
+    
+    const  add5 = factory(5, add);
+    
+    function greet(name, greeting){
+        console.log(greeting + " "+ name);
+        
+    }
+    greet("Seb", "Yop");
+    
+    function greetFactory (greeting){
+        return function (name){
+            return greet(name, greeting);
+        }
+    }
+    const greetInSpanish = greetFactory("Hola")
+    greetInSpanish("Pedro");
+*/
 
-}
+/**
+    
+    let moyenne = 0;
+    let max = 0;
+    let indexOfMax = 0;
+    
+    for (i in array) {
+        moyenne += array[i];
+    
+        if (array[i] > max) {
+            max = array[i];
+            indexOfMax = i;
+        }
+    
+        if (array[i] == max) {
+            indexOfMax += " " + i;
+        }
+    
+    
+    }
+    
+    console.log(moyenne / (array.length));
+    
+    console.log(max);
+    if (indexOfMax.length >1){
+        console.log(indexOfMax.slice(1));
+    }else{
+        console.log(indexOfMax);
+    }
+*/
 
+const array = [10, 10, 15, 18, 16, 18, 18]
 
-function factory (arg,f){
-    return function(b){
-        return f(arg,b)
-    };
-
-}
-
-const  add5 = factory(5, add);
-
-function greet(name, greeting){
-    console.log(greeting + " "+ name);
+function hasValue(value,array){
+    for (i in array){
+        if (value == array[i])
+        return true;
+    }
+    return false;
+        
     
 }
-greet("Seb", "Yop");
 
-function greetFactory (greeting){
-    return function (name){
-        return greet(name, greeting);
-    }
-}
-const greetInSpanish = greetFactory("Hola")
-greetInSpanish("Pedro");
+console.log(hasValue(12,array));
+
