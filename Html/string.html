@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src ="../JS/ceaser-number.js">
+        /**
+            const texte = "yoloO"
+            let upperCaseIndex = -1, charCode;
+    
+            for (let index in texte) {
+    
+                charCode = texte.charCodeAt(index);
+                if (charCode >= 65 && charCode <= 90) {
+                    upperCaseIndex = index;
+                    break;
+                }
+            }
+    
+            console.log(upperCaseIndex);
+        */
+
+        /***************************************
+         * Définir si only number
+         * **************************************/
+
+        /**
+            const n = "25"
+            let numberCharCode,
+                isNumber = true;
+    
+            for (let index in n) {
+                numberCharCode = n.charCodeAt(index);
+                if (numberCharCode < 48 || numberCharCode > 57) { //   Check if 0-9 in ASCII table
+                    isNumber = false;
+                }
+    
+            }
+            console.log(isNumber);
+        */
+
+
+        /***************************************
+     * Définir si email valid
+     * **************************************/
+
+        /**
+            const email = "moimoi@you.fr"
+            let isEmailValid = true,
+                hasDot = false,
+                hasArobase = false;
+    
+                for (let c of email){
+                    //Space or Double @
+                    if(c == " " || (c == "@" && hasArobase) ){
+                        isEmailValid = false;
+                        break;
+                    } 
+    
+                    if(c== "."){
+                        hasDot = true;
+                    }
+    
+                    if (c=="@"){
+                        hasArobase = true;
+                    }
+                
+                    isEmailValid = isEmailValid && hasDot && hasArobase;    
+                    console.log(isEmailValid);
+                }
+        */
+
+        /**
+            const texte = "zZ  Z"      
+            let offset = 1;
+            let texte2 = "";
+            let charCode ;
+    
+            for (index in texte){
+                charCode = texte.charCodeAt(index)
+                if (charCode == 122 ){
+                    charCode -= 26;
+                    texte2 += String.fromCharCode(charCode + offset)
+                }
+                else if (charCode == 90 ){
+                    charCode -= 26;
+                    texte2 += String.fromCharCode(charCode + offset)
+                }else if (charCode == 27){
+                    texte2 += " ";
+                }else{
+                    texte2 += String.fromCharCode(charCode + offset)
+                }
+    
+                
+            }
+            console.log(texte2);
+        */
+
+    </script>
+</body>
+
+</html>
