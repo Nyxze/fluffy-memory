@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fizzbuzz</title>
-</head>
-<body>
-    <script src="../JS/ceaser-number.js">
-        /**
-            var n = prompt("un nombre");
-            var message = "";
-    
-            const isFizz = n % 3 == 0;
-            const isBuzz = n % 5 == 0; 
-            
-            if(isFizz) message += "fizz";
-            
-            if (isBuzz) message += "buzz";
-    
-            // Si message vide donc pas divisible par 3 ou 5
-            if (! message) message = n;
-    
-            console.log(message);
-        */
+    <title>Year HTML</title>
+    <script>
+        var output = document.getElementById("year");
+        
 
+        function listYear(start, numberOfYear, inTheFuture = false) {
+            let html = "<select>";
 
+            for (let i = 0; i <= (numberOfYear); i++) {
+                /**
+                    html += "<option>" + parseInt(start + i) + "</option>";
+                */
+                html += `<option>"  ${start + i}  </option>`;
+            }
+            html += "</select>"
+            console.log(html);
+            return html;
+
+        }
+        output.innerHTML = listYear(2010, 10);
 
     </script>
+</head>
+
+<body>
+
+
+    <div id="year"></div>
 </body>
+
 </html>
