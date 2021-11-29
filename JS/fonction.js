@@ -167,17 +167,107 @@ console.log(ttc(180,8));
     }
 */
 
-const array = [10, 10, 15, 18, 16, 18, 18]
+const array = [3, 2, 7, 8, 5]
 
-function hasValue(value,array){
-    for (i in array){
-        if (value == array[i])
-        return true;
-    }
-    return false;
+/**
+    function hasValue(value,array){
+        for (i of array){
+            if (value == i)
+            return true;
+        }
+        return false;
+            
         
+    }
     
+    console.log(hasValue(12,array));
+*/
+
+
+/**
+    function naiveSearch(haystack, needle) {
+        found = false;
+        for (item of haystack) {
+            if (item == needle)
+                found = true;
+            break;
+        }
+        return found;
+    }
+    console.log(naiveSearch(array, 10));
+*/
+
+/**
+    const sortedList = array.sort();
+    
+    function binarySearch(haystack, needle) {
+        let start = 0,
+            end = haystack.length -1;
+    
+        while (start <= end) {
+            let middle = Math.floor((start + end) / 2);
+            let currentValue = haystack[middle];
+            console.log(middle);
+    
+            //Found
+            if (currentValue === needle) {
+                return true;
+            }
+            //Si la value se trouve dans entre start & middle
+            if (currentValue > needle) {
+                end = middle - 1;
+            }
+            //Si la value se trouve dans entre middle & end 
+            if (currentValue < needle) {
+                start = middle + 1;
+            }
+    
+        } return false;
+    
+    }
+    
+    
+        function recursiveBinarySearch(haystack,needle,start,end){
+            // Condition de sortie
+            if(start>end) return false;
+        
+        
+            let middle = Math.floor((start+end)/2);
+        
+            // Succes
+            if (haystack[middle] === needle) return true;
+        
+            if(haystack[middle] > needle){
+                return recursiveBinarySearch(needle, haystack, start, middle-1);
+            } else {
+                return recursiveBinarySearch(needle, haystack, middle+1, end);
+            }
+            
+        
+        
+        
+        }
+*/
+
+/**
+    console.log(array.length);
+
+
+*/
+
+function createMatrix(row,column) {
+    const array = [[]]
+
+        for (let x = 0; x <  row; x++){
+            for (let y = 0; y < column; y++){
+                array.push(Math.round(Math.random()))
+            }
+            
+        }
+
+        return console.log(array)
+
+
 }
 
-console.log(hasValue(12,array));
-
+createMatrix(5,5);
