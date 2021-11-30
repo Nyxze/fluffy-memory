@@ -256,12 +256,14 @@ const array = [3, 2, 7, 8, 5]
 */
 
 function createMatrix(row,column) {
-    const array = [[]]
+    var array = []
 
         for (let x = 0; x <  row; x++){
+            let arrayTemp = [];
             for (let y = 0; y < column; y++){
-                array.push(Math.round(Math.random()))
+                arrayTemp.push(Math.round(Math.random()))
             }
+            array.push(arrayTemp);
             
         }
 
