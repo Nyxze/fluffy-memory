@@ -14,7 +14,7 @@ const hasAdress = {
 
 //Ajout d'adress à l'objet Person 
 
-Object.assign(Person.prototype, hasAdress); // Ajout 
+Object.assign(Person.prototype, hasAdress); // Ajout de hasAdress a Person
 const a = new Person("Rene Lataupe");
 a.city = "Dublin"
 a.street = "Tapunière"
@@ -32,8 +32,8 @@ var AdressBook = function(listPerson){
     }
 }
 
-var ListPerson = function(list) {
-    this.list = list 
+var ListPerson = function(person) {
+    this.person = person 
     var addPerson = function(person){
         
 
