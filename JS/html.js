@@ -73,6 +73,8 @@ class ImageElement extends HTMLElement {
     }
 }
 
+try {
+
 
 const test = new HTMLElement("header", "yolo");
 const img1 = new ImageElement("photo","Yolo");
@@ -80,6 +82,12 @@ const img2 = new ImageElement("photo","Yolo");
 
 test.addChild(img1).addChild(img2);
 console.log(test +"");
+
+}catch(error){
+    console.log("yop")
+
+}
+
 
 
 

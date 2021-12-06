@@ -23,22 +23,6 @@ console.log(a.getAdress());
 // addPerson(person) -> Permet d'ajouter au carnet 
 // showAddresses() affiche tt le monde avec leur adress
 
-var AdressBook = function(listPerson){
-    this.listPerson = listPerson
-    
-    var showAddresses = function(){
-        console.table(listPerson);
-
-    }
-}
-
-var ListPerson = function(person) {
-    this.person = person 
-    var addPerson = function(person){
-        
-
-    }
-}
 
 Object.assign(ListPerson.prototype, Person)
 Object.assign(AdressBook.prototype, ListPerson);
