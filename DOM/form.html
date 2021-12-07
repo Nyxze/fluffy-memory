@@ -1,77 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-      rel="stylesheet" href="../Bootstrap/node_modules/bootstrap/dist/css/bootstrap.min.css"
-    />
-    <style>
-        form{
-            width: 800px;
-            margin : 5px auto;
-        }
-        form > fieldset {
 
-            border : 1 px solid silver;
-        }
-    </style>
-    <title>Document</title>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Bootstrap/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <style>
+    form {
+      width: 800px;
+      margin: 5px auto;
+
+    }
+
+    #eye {
+
+      background-color: rgb(236, 230, 230);
+      border-radius: 10%;
+    }
+
+    .error {
+      color: red;
+      font-style: italic;
+    }
+  </style>
+  <title>Document</title>
 </head>
+
 <body>
 
-    <form>
-        <div class="row mb-3">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-10">
-            <input type="email" class="form-control" id="inputEmail3">
+  <form novalidate>
+    <div class="row mb-3">
+      <label for="nom" class="col-sm-2 col-form-label">Nom</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="nom" required placeholder="Nom ">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" required>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="password" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" id="password"
+            pattern="(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}"
+            title="Strong mdp " required>
+          <img id="eye" src="../Bootstrap/node_modules/bootstrap-icons/icons/eye.svg" width="25">
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="number" class="col-sm-2 col-form-label">Number</label>
+      <div class="col-sm-10">
+        <input type="number" min="0" max="100" step="2" class="form-control" id="number">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="born" class="col-sm-2 col-form-label">Date de naissance</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" id="born">
+      </div>
+      <div class="row mb-3">
+        <label for="file" class="col-sm-2 col-form-label">Fichier</label>
+        <div class="col-sm-10">
+          <input type="file" class="form-control" id="file">
+        </div>
+      </div>
+      <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0"></legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="sport" id="football" value="football">
+            <label class="form-check-label" for="football">
+              Football
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="sport" id="basket" value="basket">
+            <label class="form-check-label" for="basket">
+              Basket
+            </label>
+          </div>
+          <div class="form-check ">
+            <input class="form-check-input" type="radio" name="sport" id="curling" value="curling" disabled>
+            <label class="form-check-label" for="curling">
+              Curling
+            </label>
           </div>
         </div>
-        <div class="row mb-3">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-          <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword3">
-          </div>
+    </div>
+    </fieldset>
+    <div class="row mb-3">
+      <div class="col-sm-10 offset-sm-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck1">
+          <label class="form-check-label" for="gridCheck1">
+            Example checkbox
+          </label>
         </div>
-        <fieldset class="row mb-3">
-          <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-          <div class="col-sm-10">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-              <label class="form-check-label" for="gridRadios1">
-                First radio
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-              <label class="form-check-label" for="gridRadios2">
-                Second radio
-              </label>
-            </div>
-            <div class="form-check disabled">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-              <label class="form-check-label" for="gridRadios3">
-                Third disabled radio
-              </label>
-            </div>
-          </div>
-        </fieldset>
-        <div class="row mb-3">
-          <div class="col-sm-10 offset-sm-2">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck1">
-              <label class="form-check-label" for="gridCheck1">
-                Example checkbox
-              </label>
-            </div>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
-      </form>
-    
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sign in</button>
+    <ul class="error">
+
+    </ul>
+  </form>
+
 </body>
 <footer>
-    <script src ="../Bootstrap/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../Bootstrap/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script>
+    document.querySelector('#eye').addEventListener('mousedown', function () {
+
+
+      this.src = "../Bootstrap/node_modules/bootstrap-icons/icons/eye-slash.svg";
+      this.parentNode.querySelector('input').type = 'text'
+
+    })
+
+
+    document.querySelector('#eye').addEventListener('mouseup', function () {
+      this.src = "../Bootstrap/node_modules/bootstrap-icons/icons/eye-slash.svg";
+      this.parentNode.querySelector('input').type = 'password'
+
+    })
+
+
+    document.querySelector('form').addEventListener('submit', function (e) {
+      if (!this.checkValidity()) {
+
+        let ul = document.querySelector('ul.error')
+        ul.innerHTML = '';
+        let nom = document.querySelector('#nom')
+        nom.setCustomValidity('');
+
+        if (!nom.checkValidity()) {
+          nom.setCustomValidity('Put a name please');
+          let li = document.createElement('li');
+          ul.appendChild(li);
+          li.textContent = nom.validationMessage;
+        }
+
+
+        let email = document.querySelector('#email')
+        email.setCustomValidity('');
+        if (!email.checkValidity()) {
+          if (email.validity.valueMissing) {
+            email.setCustomValidity('Non renseigné');
+          }
+          else
+            email.setCustomValidity('Invalid Email');
+
+          let li = document.createElement('li');
+          ul.appendChild(li);
+          li.textContent = email.validationMessage;
+
+
+
+
+        } 
+        e.preventDefault(); // Si no valid, cancel submit
+
+      }
+
+
+    })
+
+  </script>
 </footer>
+
 </html>
