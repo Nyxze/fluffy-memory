@@ -66,9 +66,9 @@
         <input type="date" class="form-control" id="born">
       </div>
       <div class="row mb-3">
-        <label for="file" class="col-sm-2 col-form-label">Fichier</label>
+        <label for="cv" class="col-sm-2 col-form-label">CV (PDF)</label>
         <div class="col-sm-10">
-          <input type="file" class="form-control" id="file">
+          <input type="file" class="form-control" id="cv" required>
         </div>
       </div>
       <fieldset class="row mb-3">
@@ -162,9 +162,31 @@
           li.textContent = email.validationMessage;
 
 
+        }
+
+        let cv = document.querySelector('#cv')
+        cv.setCustomValidity('');
+        if (!cv.checkValidity()) {
+
+          cv.setCustomValidity('il faut un cv');
+        } else {
+          let f = cv.files[0];
+          if (f.size > 1024 * 1024) {
+            cv.setCustomValidity('Trop gros');
+
+          } else if (f.type.indexOf('pdf') === -1) {
+            cv.setCustomValidity('Want a pdf');
+          }
+        }
+        if (!cv.checkValidity()) {
+          let li = document.createElement('li');
+          ul.appendChild(li);
+          li.textContent = cv.validationMessage;
+        }
 
 
-        } 
+
+
         e.preventDefault(); // Si no valid, cancel submit
 
       }
