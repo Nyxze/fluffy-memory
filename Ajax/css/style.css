@@ -1,0 +1,24 @@
+#calque.animate{
+animation : myanime 10s 1 linear forwards;
+
+
+}
+@keyframes myanime {
+    0%{
+        width: 200px;
+        height: 200px;
+
+    }
+    50%{
+        width: 90%;
+        font-size: 36px
+
+
+    }
+    100%{
+        width: 90%;
+        font-size: 36px;
+        height: 600px
+
+    }
+}

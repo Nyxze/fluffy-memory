@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <title>Document</title>
+    <style>
+        form {
+            width: 800px;
+            margin: 5px auto;
+
+        }
+
+        #eye {
+
+            background-color: rgb(236, 230, 230);
+            border-radius: 10%;
+        }
+
+        .error {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <div class="row mb-3">
+            <label for="nom" class="col-sm-2 col-form-label">Nom</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="nom" placeholder="Nom ">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="born" class="col-sm-2 col-form-label">Date de naissance</label>
+            <div class="col-sm-10">
+                <input type="date" class="form-control" id="born">
+            </div>
+
+
+        </div>
+        <div class="row mb-3">
+            <label for="password" class="col-sm-2 col-form-label">Code postale</label>
+            <div class="col-sm-10">
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" id="password">
+                    <img id="eye" src="css/img/eye.svg" width="25">
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" id="password">
+                    <img class="eye" src="css/img/eye.svg" width="25">
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="cpassword" class="col-sm-2 col-form-label">Confirm psw</label>
+            <div class="col-sm-10">
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" id="cpassword">
+                    <img class="eye" src="css/img/eye.svg" width="25">
+                </div>
+            </div>
+        </div>
+        
+
+
+        
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Sign in</button>
+
+    </form>
+
+</body>
+<footer>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/i18n/messages_validate_fr.min.js"></script>
+
+    <script>
+        $('#eye').mousedown(function () {
+            this.src = "css/img/eye-slash.svg";//DOM
+            //$(this).attr('src', 'css/img/eye-slash.svg')// jQuerry
+            $(this).parent().find('input').attr('type', 'text');
+        });
+
+
+        $('#eye').mouseup(function () {
+            this.src = "css/img/eye.svg";
+            $(this).parent().find('input').attr('type', 'password');
+
+        });
+
+        $('input[type=date]').change(function () {
+            $(this).valid();
+        });
+        $.validator.addMethod(
+            'strongpassword', function (value, element, state) {
+                if (!state) return true;
+                regex: /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/;
+                return this.optional(element) || regex.test(value);
+            }, "Strong psw plz"
+        );
+
+        $('form').validate({
+
+            rules: {
+                'nom': {
+                    'required': true,
+                    'minlength': 25
+
+                },
+                'email': {
+                    'required': true,
+
+
+                },
+                'date': {
+                    'required': true,
+
+
+                },
+                'password': {
+                    'required': true,
+                    'strongpassword': true,
+
+
+                }
+
+            }
+        });
+    </script>
+</footer>
+
+</html>

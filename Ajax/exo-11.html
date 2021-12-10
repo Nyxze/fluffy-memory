@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="doc"></div>
+</body>
+<footer>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        /**
+            $.getJSON('JSON/contacts.json', function(json){
+                console.log(json.data)
+            })
+        */
+        $.ajax({
+            url: 'JSON/contacts.json',
+            method: 'get',
+            dataType: 'json'
+
+        }).done(function (json) {
+            
+            $('#doc').text(json.title)
+            console.log(json.data)
+
+        }).fail(function (error) {
+            console.log(error.status + ' :' + error.statusText)
+        })
+
+    </script>
+</footer>
+
+</html>

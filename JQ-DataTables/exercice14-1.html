@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les formulaires</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/overcast/jquery-ui.min.css">
+
+    <style>
+        form {
+            width: 800px;
+            margin: 20px auto;
+        }
+
+        #eye {
+            border: 1px solid silver;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: red;
+            font-style: italic;
+        }
+
+        label.error {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <form novalidate>
+        <div class="row mb-3">
+            <label for="nom" class="col-sm-2 col-form-label">Nom</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="nom" data-caption="Nom" name="nom"
+                    placeholder="Votre nom de naissance">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" data-caption="Email" name="email">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="naissance" class="col-sm-2 col-form-label">Date naissance</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control date" id="naissance" autocomplete="off"
+                    data-caption="Date naissance" name="naissance">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="codepostale" class="col-sm-2 col-form-label">Code postal</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="codepostale" data-caption="Code posta" name="codepostale">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="passe" class="col-sm-2 col-form-label">Mot de passe</label>
+            <div class="col-sm-10">
+                <div class="input-group mb-3">
+                    <img src="css/img/eye.svg" class="eye" width="20">
+                    <input type="password" class="form-control" id="passe" data-caption="Mot de passe" name="passe">
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="confirmpasse" class="col-sm-2 col-form-label">Confirmer le
+                mot de passe</label>
+            <div class="col-sm-10">
+                <div class="input-group mb-3">
+                    <img src="css/img/eye.svg" class="eye" width="20">
+                    <input type="password" class="form-control" id="confirmpasse" data-caption="Confirmer le
+                    mot de passe" name="confirmpasse">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Validez</button>
+        <ul id="errormsg" class="error"></ul>
+
+    </form>
+
+    <script src="js/bootstrap.min.js"> </script>
+    <script src="js/jquery.min.js"> </script>
+    <script src="js/jquery.validate.min.js"> </script>
+    <script src="js/additional-methods.min.js"> </script>
+    <script src="js/i18n/messages_validate_fr.min.js"> </script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/i18n/jquery.ui.datepicker-fr.js"></script>
+    <script>
+        $('.eye').mousedown(function () {
+            this.src = "css/img/eye-slash.svg";
+            // $(this).attr('src', 'img/eye_off.png');
+            $(this).parent().find('input').attr('type', 'text');
+        });
+        $('.eye').mouseup(function () {
+            this.src = "css/img/eye.svg";
+            $(this).parent().find('input').attr('type', 'password');
+        });
+        
+    
+
+        $('input.date').change(function () {
+            $(this).valid();
+        });
+        $.validator.addMethod(
+            'strongpassword',
+            function (value, element, state) {
+                if (!state) return true;
+                regex = /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*+<>\-\.].*[!@#$&*<>\-\.])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z]).{8,}$/;
+
+                return this.optional(element) || regex.test(value);
+            },
+            "Votre mot de passe doit être fort."
+        );
+
+        $.validator.addMethod(
+            'codepostale',
+            function (value, element, state) {
+                if (!state) return true;
+                regex = /^(2[AaBb]|0[1-9]|[1-9][0-9])[0-9]{3}$/;
+                return this.optional(element) || regex.test(value);
+            },
+            "Code postale invalid"
+        );
+        $.validator.addMethod(
+            'equal',
+            function (value, element, id) {
+
+                return this.optional(element) || value === $(id).get(0).value;
+            },
+            "Pass don't match "
+        );
+        $('form').validate({
+
+
+
+            rules: {
+                'nom': {
+                    'required': true,
+                    'minlength': 2,
+                    'maxlength': 25
+                },
+                'email': {
+                    'required': true,
+                    'email': true,
+                    'maxlength': 100
+                },
+                'naissance': {
+                    'required': true,
+                    'dateITA': true
+
+                },
+                'codepostale': {
+                    'required': true,
+                    'codepostale': true
+                },
+                'passe': {
+                    'required': true,
+                    'strongpassword': true
+                },
+                'confirmpasse': {
+                    'required': true,
+                    'equal': '#passe'
+                }
+
+            },
+            invalidHandler: function (form, validator) {
+                let errors = validator['invalid']
+                let msg = $('#errormsg').empty();
+                for (let key in errors) {
+                    let name = $('*[name=' + key + ']').get(0).dataset.nom
+                    $('<li>').appendTo(msg).text(`${key}: ${errors[key]}`)
+                }
+
+
+            },
+            submitHandler: function (form) {
+                $('#errormsg').empty();
+            },
+            errorPlacement: function (error) {
+                return console.log(error)
+
+
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>

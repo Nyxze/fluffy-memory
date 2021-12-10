@@ -78,6 +78,9 @@
                 "city": city
             };
             document.querySelector('tbody').innerHTML = '';
+            document.querySelector('#nom').innerHTML = '';
+            document.querySelector('#prenom').innerHTML = '';
+            document.querySelector('#city').innerHTML = '';
             myDB.indexedDB.create('contacts', data);
         })
         myDB.indexedDB.callback = function (data) {
@@ -127,6 +130,7 @@
                 let prenom = colTD[2].textContent;
                 let city = colTD[3].textContent;
                 let data = {
+                    "id": id,
                     "nom": nom,
                     "prénom": prenom,
                     "city": city

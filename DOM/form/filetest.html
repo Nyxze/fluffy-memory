@@ -29,31 +29,37 @@
         let depot = document.querySelector('#depot')
         depot.addEventListener('dragenter', function (e) {
 
-            e.stopPropagation();
-            e.preventDefault();
+            cancelPropagation(e);
         })
         depot.addEventListener('dragover', function (e) {
 
-            e.stopPropagation();
-            e.preventDefault();
+            cancelPropagation(e);
         })
 
         depot.addEventListener('drop', function (e) {
 
-            e.stopPropagation();
-            e.preventDefault();
+            cancelPropagation(e);
             let dt = e.dataTransfer;
-            let f = dt.files[0];
-            let oUrl= URL.createObjectURL(f);
-            let img = document.createElement('img')
-            depot.appendChild(img)
-            img.src = oUrl;
-            img.addEventListener('load',function(){
-                URL.revokeObjectURL(oUrl)
+            let files = dt.files;
+            Array.from(files).forEach(function (f) {
+                let oUrl = URL.createObjectURL(f);
+                let img = document.createElement('img')
+                img.src = oUrl;
+                img.addEventListener('load', function () {
+                    URL.revokeObjectURL(oUrl)
+
+                });
+                depot.appendChild(img)
             })
 
-
         })
+
+        function cancelPropagation(e) {
+            e.stopPropagation();
+            e.preventDefault();
+
+        }
+
 
 
 
